@@ -1,0 +1,26 @@
+WTF are we making ?
+Functional Requirments type shit:
+
+1- i want to create decks of flash cards
+2- i want to customize my card so it has a title for example and flipped, non flipped content 
+	maybe the non flipped is the question and the other is the answer 
+3- i want to give my decks a name and a category 
+4- i want the shuffle modes of my category to be different and choose between them 
+5- i want to mark each card as (success no need to revision again, needs revision) 
+6- maybe ai integration of some model to help me create flash cards or something 
+7- i want to see the list of cards that need to be revised again and mark them with success 
+8- i want the ability to search for decks, share them with others so that they can also include in their decks library
+9- i want an ai agent that creates decks for me, summarize some topics i give him and adds it to my notes list
+
+
+-------------------------------
+
+Database design:
+ Entities i have:
+	1- User (name, email, password, bio (where he writes what is he interested in) , picture, Guid)
+	2- Decks (Guid, name, number of Cards (derived i guess), Deck Description, Creator Id, public/private, category)
+	3- Decks Used Table By Others (Guid, DeckGuId, UsersId) (if the deck is not used by anyone after deletion, it gets removed), (Decks are either public or private => private is shared via a link and you can add it t your collection or not, public => is a place where you choose categories and start exploring them (paganation is required at this one i guess) ) 
+	4- Cards (Guid, DeckGuid, Title, Question, Answer, Maybe Picrues path if possible)
+	5- CardStatus (Guid, CardId, UserId, Success/Fail needs Revision)
+	6- Category Table (seed data just id and category name which is a enum conversion string)
+	7- Notes Table (id, UserId, link to the file in cloud) 	 
