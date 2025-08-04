@@ -24,3 +24,12 @@ Database design:
 	5- CardStatus (Guid, CardId, UserId, Success/Fail needs Revision)
 	6- Category Table (seed data just id and category name which is a enum conversion string)
 	7- Notes Table (id, UserId, link to the file in cloud) 	 
+
+
+Interfaces:
+    User Interface => 
+        AddDeckToCollection
+        RemoveDeckFromCollection
+        
+    Deck Interface =>
+        AddRangeOfCards 

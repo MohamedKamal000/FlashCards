@@ -10,8 +10,8 @@ public class User
     public string? Bio { get; set; }
 
     public string? PicturePath { get; set; }
-    public ICollection<Deck>? ReferencedDecks { get; set; }
-    public ICollection<Deck>? CreatedDecks { get; set; }
-    public ICollection<Note>? Notes { get; set; }
-    public ICollection<CardStatus>? RevisionList { get; set; }
+    public ICollection<Deck> ReferencedDecks { get; set; }
+    public ICollection<Deck> CreatedDecks { get; set; }
+    public ICollection<Note> Notes { get; set; }
+    public ICollection<CardStatus> RevisionList { get; set; }
 }
