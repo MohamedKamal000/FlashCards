@@ -20,11 +20,6 @@ public class UserRepository : GenericRepository<User>, IUserRepository
     {
         await _dbContext.Entry(user).Collection(u => u.ReferencedDecks).LoadAsync();
         user.ReferencedDecks.Remove(deck);
-
-        // will do the deck cleanup in Application Layer
-        // if the deck removed from the collection does not have any other referenced user
-        // and the user who created it marked it as removed
-        // it gets removed from the deck table 
     }
 
     // i need to do pagenation or whatever it called here...
@@ -43,9 +38,7 @@ public class UserRepository : GenericRepository<User>, IUserRepository
     public override void Delete(User obj)
     {
         _dbContext.Entry(obj).Collection(u => u.CreatedDecks).Load();
-
         var userDecks = obj.CreatedDecks.ToList();
-
         userDecks.ForEach(d => d.IsDeletedByCreator = true);
     }
 }

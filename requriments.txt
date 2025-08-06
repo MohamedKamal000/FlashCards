@@ -33,3 +33,34 @@ Interfaces:
         
     Deck Interface =>
         AddRangeOfCards 
+        
+      
+EndPoints i have:
+    Auth:
+        1- Register/Login/GetNewRefreshToken/
+        2- Change Email,Password 
+        ...
+    DeckSets:
+        1- ViewCreatedSets
+        2- ViewReferencedSets
+        3- ViewCertainSet (for sharing and selecting stuff) 
+        4- AddCards/RemoveCards
+        5- Get All Cards
+        6- View Public Sets with certain Category 
+        7- AddSet To Collection 
+        8- Remove Set From Created/Referenced
+        9- Update Set (any update related to name,Category, Description)
+        
+        
+    Cards:
+        1- View Card 
+        2- CreateNew Card and add it to a certain deck
+        3- Update/ Remove
+        4- Mark Card as (Successful, Needs Revision) ( it works as a edit as well)
+        
+    Card Status:
+        1- Show all (it should show it in a bar related to the set and giving progress)
+    
+    
+    Notes:
+        Basically just CRUDs 
