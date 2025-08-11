@@ -13,9 +13,19 @@ public class GenericRepository<T> : IRepository<T> where T : class
         _dbContext = dbContext;
     }
     
-    public async Task<T?> Get(Ulid id)
+    public async Task<T?> Get(string id)
     {
-        return await _dbContext.Set<T>().FindAsync(id);
+        if (!Ulid.TryParse(id,out var ulid))
+        {
+            return null;
+        }
+        
+        return await _dbContext.Set<T>().FindAsync(ulid);
+    }
+
+    public async Task AddRange(IEnumerable<T> objs)
+    {
+        await _dbContext.Set<T>().AddRangeAsync(objs);
     }
 
     public async Task<T?> Find(Expression<Func<T, bool>> ex)

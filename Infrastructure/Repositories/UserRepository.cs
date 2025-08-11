@@ -24,11 +24,10 @@ public class UserRepository : GenericRepository<User>, IUserRepository
 
     // i need to do pagenation or whatever it called here...
     // i will end up loading all entities in order to do the pagentation thing anyway
-    public async Task<IEnumerable<Deck>> GetPortionOfDecks(User user, int pageSize, int index)
+    public async Task<IEnumerable<Deck>> GetPortionOfReferencedDecks(User user, int pageSize, int index)
     {
-        var userId = user.Id; // Make sure this is accessible
         return await _dbContext.Users
-            .Where(u => u.Id == userId)
+            .Where(u => u.Id == user.Id)
             .SelectMany(u => u.ReferencedDecks)
             .OrderBy(d => d.Id) 
             .Skip(pageSize * index)

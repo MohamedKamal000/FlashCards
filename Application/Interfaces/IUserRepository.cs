@@ -8,5 +8,5 @@ public interface IUserRepository : IRepository<User>
     
     public Task RemoveDeckFromCollection(User user,Deck deck);
 
-    public Task<IEnumerable<Deck>> GetPortionOfDecks(User user,int pageSize,int index);
+    public Task<IEnumerable<Deck>> GetPortionOfReferencedDecks(User user,int pageSize,int index);
 }

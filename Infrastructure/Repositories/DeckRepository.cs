@@ -33,7 +33,7 @@ public class DeckRepository : GenericRepository<Deck>, IDeckRepository
     // should i add a remove card ? or i do it with get/ update things i need then save ????
     // validation is done in Application Layer :>
 
-    public async Task<IEnumerable<Deck>> TakePublicDecksPortion(Expression<Func<Deck, bool>> expression, int pageSize,
+    public async Task<IEnumerable<Deck>> TakePortionOfSetsWithFilter(Expression<Func<Deck, bool>> expression, int pageSize,
         int index)
     {
         var result = _dbContext.Decks.Where(expression).OrderBy(d => d.Id)
@@ -46,7 +46,11 @@ public class DeckRepository : GenericRepository<Deck>, IDeckRepository
     public override void Delete(Deck deck)
     {
          _dbContext.Decks.Entry(deck).Collection(d => d.ReferencedUsers).Load();
-         if (deck.IsDeletedByCreator && deck.ReferencedUsers.Any())
+
+         deck.IsDeletedByCreator = true;
+         
+         if (!deck.ReferencedUsers.Any())
              _dbContext.Decks.Remove(deck);
+         
     }
 }
