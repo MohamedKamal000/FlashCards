@@ -11,7 +11,7 @@ public class DeckConfiguration : IEntityTypeConfiguration<Deck>
         builder.HasKey(d => d.Id);
         builder.Property(d => d.Id).
             ValueGeneratedNever().HasConversion(UlidValueConvertor.CreateConvertor())
-            .HasColumnType("binary(16)");
+            .HasColumnType("varchar(26)");
      
         builder.Property(d => d.DeckName).IsRequired().HasMaxLength(100);
         builder.Property(d => d.DeckDescription).HasMaxLength(500);

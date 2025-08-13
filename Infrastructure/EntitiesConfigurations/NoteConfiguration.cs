@@ -10,7 +10,9 @@ public class NoteConfiguration : IEntityTypeConfiguration<Note>
     {
         builder.HasKey(n => n.Id);
         builder.Property(n => n.Id).
-            ValueGeneratedNever().HasConversion(UlidValueConvertor.CreateConvertor()).HasColumnType("binary(16)");
+            ValueGeneratedNever()
+            .HasConversion(UlidValueConvertor.CreateConvertor()).
+            HasColumnType("varchar(26)");
         
         builder.Property(n => n.NoteFilePath).IsRequired().HasMaxLength(200);
 

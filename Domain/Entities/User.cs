@@ -14,4 +14,9 @@ public class User
     public ICollection<Deck> CreatedDecks { get; set; }
     public ICollection<Note> Notes { get; set; }
     public ICollection<CardStatus> RevisionList { get; set; }
+
+    public override string ToString()
+    {
+        return $"Name: {Name}, Email: {Email}, Password: {Password}, Bio: {Bio}, PicturePath: {PicturePath}";
+    }
 }

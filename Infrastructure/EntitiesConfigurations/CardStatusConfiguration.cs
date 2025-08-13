@@ -10,7 +10,7 @@ public class CardStatusConfiguration : IEntityTypeConfiguration<CardStatus>
     {
         builder.HasKey(cs => cs.Id);
         builder.Property(cs => cs.Id)
-            .ValueGeneratedNever().HasConversion(UlidValueConvertor.CreateConvertor()).HasColumnType("binary(16)");
+            .ValueGeneratedNever().HasConversion(UlidValueConvertor.CreateConvertor()).HasColumnType("varchar(26)");
 
         builder.Property(cs => cs.NeedsRevision).IsRequired();
 

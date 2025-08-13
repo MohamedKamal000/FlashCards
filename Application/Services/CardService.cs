@@ -34,10 +34,8 @@ public class CardService
     {
         var deck = await _unitOfWork.DeckRepository.Get(deckId);
 
-
         if (deck is null)
             return Response<string>.GetNotAcceptedRequest("deck id is not correct");
-
 
         var cards = cardsDto.Select(EntityMapper.ProjectDtoToEntity<AddCardToDeckDto, Card>).ToList();
 
@@ -75,7 +73,6 @@ public class CardService
             return Response<string>.GetNotAcceptedRequest("user id is not correct");
 
         
-        
         var cardStatus = new CardStatus
         {
             NeedsRevision = state,
@@ -89,7 +86,8 @@ public class CardService
         return Response<string>.GetAcceptedRequest("Card status is created", cardStatus.Id.ToString());
     }
 
-
+    
+    
 }
 
 

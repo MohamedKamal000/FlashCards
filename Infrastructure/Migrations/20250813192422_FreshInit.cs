@@ -5,7 +5,7 @@
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class FreshInit : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -14,7 +14,7 @@ namespace Infrastructure.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(type: "binary(16)", nullable: false),
+                    Id = table.Column<string>(type: "varchar(26)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -30,10 +30,10 @@ namespace Infrastructure.Migrations
                 name: "Decks",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(type: "binary(16)", nullable: false),
+                    Id = table.Column<string>(type: "varchar(26)", nullable: false),
                     DeckName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     DeckDescription = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    CreatorId = table.Column<byte[]>(type: "binary(16)", nullable: false),
+                    CreatorId = table.Column<string>(type: "varchar(26)", nullable: false),
                     IsPublic = table.Column<bool>(type: "bit", nullable: false),
                     IsDeletedByCreator = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     DeckCategory = table.Column<string>(type: "nvarchar(max)", nullable: false)
@@ -52,8 +52,8 @@ namespace Infrastructure.Migrations
                 name: "Notes",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(type: "binary(16)", nullable: false),
-                    UserId = table.Column<byte[]>(type: "binary(16)", nullable: false),
+                    Id = table.Column<string>(type: "varchar(26)", nullable: false),
+                    UserId = table.Column<string>(type: "varchar(26)", nullable: false),
                     NoteFilePath = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
                 },
                 constraints: table =>
@@ -71,11 +71,11 @@ namespace Infrastructure.Migrations
                 name: "Cards",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(type: "binary(16)", nullable: false),
+                    Id = table.Column<string>(type: "varchar(26)", nullable: false),
                     CardTitle = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Question = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     Answer = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    DeckId = table.Column<byte[]>(type: "binary(16)", nullable: false),
+                    DeckId = table.Column<string>(type: "varchar(26)", nullable: false),
                     PicturePath = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true)
                 },
                 constraints: table =>
@@ -93,8 +93,8 @@ namespace Infrastructure.Migrations
                 name: "ReferencedDeck_ReferencedUser",
                 columns: table => new
                 {
-                    DeckId = table.Column<byte[]>(type: "binary(16)", nullable: false),
-                    UserId = table.Column<byte[]>(type: "binary(16)", nullable: false)
+                    DeckId = table.Column<string>(type: "varchar(26)", nullable: false),
+                    UserId = table.Column<string>(type: "varchar(26)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -116,9 +116,9 @@ namespace Infrastructure.Migrations
                 name: "CardsStatus",
                 columns: table => new
                 {
-                    Id = table.Column<byte[]>(type: "binary(16)", nullable: false),
-                    UserId = table.Column<byte[]>(type: "binary(16)", nullable: false),
-                    CardId = table.Column<byte[]>(type: "binary(16)", nullable: false),
+                    Id = table.Column<string>(type: "varchar(26)", nullable: false),
+                    UserId = table.Column<string>(type: "varchar(26)", nullable: false),
+                    CardId = table.Column<string>(type: "varchar(26)", nullable: false),
                     NeedsRevision = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>

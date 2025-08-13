@@ -12,8 +12,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.Id).
             ValueGeneratedNever().
             HasConversion(UlidValueConvertor.CreateConvertor())
-            .HasColumnType("binary(16)");
-
+            .HasColumnType("varchar(26)");
+           
         // fixing the multiple cascade paths error
         builder.HasMany(u => u.ReferencedDecks)
             .WithMany(d => d.ReferencedUsers)

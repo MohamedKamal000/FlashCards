@@ -23,8 +23,8 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.Card", b =>
                 {
-                    b.Property<byte[]>("Id")
-                        .HasColumnType("binary(16)");
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(26)");
 
                     b.Property<string>("Answer")
                         .IsRequired()
@@ -36,9 +36,9 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<byte[]>("DeckId")
+                    b.Property<string>("DeckId")
                         .IsRequired()
-                        .HasColumnType("binary(16)");
+                        .HasColumnType("varchar(26)");
 
                     b.Property<string>("PicturePath")
                         .HasMaxLength(200)
@@ -58,19 +58,19 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.CardStatus", b =>
                 {
-                    b.Property<byte[]>("Id")
-                        .HasColumnType("binary(16)");
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(26)");
 
-                    b.Property<byte[]>("CardId")
+                    b.Property<string>("CardId")
                         .IsRequired()
-                        .HasColumnType("binary(16)");
+                        .HasColumnType("varchar(26)");
 
                     b.Property<bool>("NeedsRevision")
                         .HasColumnType("bit");
 
-                    b.Property<byte[]>("UserId")
+                    b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("binary(16)");
+                        .HasColumnType("varchar(26)");
 
                     b.HasKey("Id");
 
@@ -83,12 +83,12 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.Deck", b =>
                 {
-                    b.Property<byte[]>("Id")
-                        .HasColumnType("binary(16)");
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(26)");
 
-                    b.Property<byte[]>("CreatorId")
+                    b.Property<string>("CreatorId")
                         .IsRequired()
-                        .HasColumnType("binary(16)");
+                        .HasColumnType("varchar(26)");
 
                     b.Property<string>("DeckCategory")
                         .IsRequired()
@@ -121,17 +121,17 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.Note", b =>
                 {
-                    b.Property<byte[]>("Id")
-                        .HasColumnType("binary(16)");
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(26)");
 
                     b.Property<string>("NoteFilePath")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<byte[]>("UserId")
+                    b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("binary(16)");
+                        .HasColumnType("varchar(26)");
 
                     b.HasKey("Id");
 
@@ -142,8 +142,8 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.User", b =>
                 {
-                    b.Property<byte[]>("Id")
-                        .HasColumnType("binary(16)");
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(26)");
 
                     b.Property<string>("Bio")
                         .HasColumnType("nvarchar(max)");
@@ -175,11 +175,11 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("ReferencedDeck_ReferencedUser", b =>
                 {
-                    b.Property<byte[]>("DeckId")
-                        .HasColumnType("binary(16)");
+                    b.Property<string>("DeckId")
+                        .HasColumnType("varchar(26)");
 
-                    b.Property<byte[]>("UserId")
-                        .HasColumnType("binary(16)");
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(26)");
 
                     b.HasKey("DeckId", "UserId");
 

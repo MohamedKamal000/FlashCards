@@ -33,7 +33,7 @@ public class GenericRepository<T> : IRepository<T> where T : class
         return  await _dbContext.Set<T>().FirstOrDefaultAsync(ex);
     }
 
-    public async Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> ex)
+    public virtual async Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> ex)
     {
         return  await _dbContext.Set<T>().Where(ex).ToListAsync();
     }
