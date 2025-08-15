@@ -17,6 +17,7 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
         <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="9.0.3" />
         <PackageReference Include="Ulid" Version="1.4.1" />
+        <InternalsVisibleTo Include="IntegrationTests" />
     </ItemGroup>
 
     <ItemGroup>

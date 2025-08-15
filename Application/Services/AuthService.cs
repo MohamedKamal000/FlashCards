@@ -28,8 +28,12 @@ public class AuthService
 
         await _unitOfWork.SaveChanges();
 
-
-        return Response<TokenBodyResponse>.GetAcceptedRequest("User Created",null);
+        var token = new TokenBodyResponse()
+        {
+            AccessToken = user.Id.ToString(),
+            RefreshToken = user.Id.ToString()
+        };
+        return Response<TokenBodyResponse>.GetAcceptedRequest("User Created", token);
     }
 
     public async Task<Response<TokenBodyResponse>> LoginUser(LoginUserDto loginUserDto)

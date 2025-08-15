@@ -12,4 +12,9 @@ public class RegisterUserDto
 
     public string? PicturePath { get; set; }
 
+    public override string ToString()
+    {
+        return
+            $"{nameof(Name)}: {Name}, {nameof(Email)}: {Email}, {nameof(Password)}: {Password}, {nameof(Bio)}: {Bio}, {nameof(PicturePath)}: {PicturePath}";
+    }
 }
